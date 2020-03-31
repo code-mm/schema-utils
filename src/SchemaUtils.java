@@ -1,7 +1,5 @@
 import java.io.*;
-
 public class SchemaUtils {
-
 
     public static String readToString(String fileName) {
         String encoding = "UTF-8";
@@ -18,6 +16,7 @@ public class SchemaUtils {
         }
     }
 
+
     public static void main(String[] args) throws Exception {
         if (args.length < 1) {
             System.out.println("==============================");
@@ -30,10 +29,12 @@ public class SchemaUtils {
         System.out.println("schema.json路径 : " + path);
         System.out.println("==============================");
         File file = new File(path);
+
+
         String s = readToString(file.getPath());
         String newStr = s.replace("\"Query\"", "\"QueryRoot\"");
         PrintStream ps = new PrintStream(file);
-        ps.print(newStr);
+        ps.println(newStr);
         ps.flush();
         ps.close();
         System.out.println("==============================");
